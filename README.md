@@ -15,6 +15,5 @@
 * Using authenticaton and authorization features
 * Using PagedList for paging the products
 * Using DbContext, Migration and code-first for manage database
-* 
 
 #### © 2021 thien.an | fb/antruong3007
