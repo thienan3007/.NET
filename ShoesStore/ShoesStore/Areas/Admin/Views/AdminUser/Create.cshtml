@@ -1,0 +1,122 @@
+﻿@model ShoesStore.Models.User
+
+@{
+    ViewData["title"] = "User Manage";
+    Layout = "_Layout";
+}
+@section head {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/plugins/codemirror/theme/monokai.css">
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="~/plugins/simplemde/simplemde.min.css">
+}
+<div class="border p-4">
+    <div class="form-group row">
+        <h2 class="text-black-50 pl-3">Add new user</h2>
+    </div>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add new user</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" asp-action="CreatePost">
+            <div class="card-body">
+
+                <!--email-->
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input asp-for="Email" type="text" class="form-control" id="email" placeholder="Enter email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <!--name-->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Enter name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!--address-->
+
+                <div class="form-group">
+                    <label for="address">Adress</label>
+                    <input asp-for="Address" type="text" class="form-control" id="address" placeholder="Enter address">
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+                <!-- password -->
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input asp-for="Password" type="password" class="form-control" id="password" placeholder="Enter password">
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <!--re password-->
+                <div class="form-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input asp-for="Password" type="password" class="form-control" id="confirmPassword" name="confirmPassword" placeholder="Enter confirm password">
+                    <span class="text-danger">@ViewBag.password</span>
+                </div>
+                <!-- phone -->
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input asp-for="Phone" type="text" class="form-control" id="phone" placeholder="Enter phone">
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="active">Status</label>
+                    <div class="form-check">
+                        <input type="radio" asp-for="Status" class="form-check-input" value="true" id="active" name="status" checked="checked">
+                        <label class="form-check-label" for="active">Active</label><br />
+                        <input type="radio" asp-for="Status" class="form-check-input" value="false" id="inactive" name="status">
+                        <label class="form-check-label" for="inactive">Inactive</label>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/plugins/codemirror/codemirror.js"></script>
+    <script src="~/plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote({
+                height: 150
+            })
+        })
+    </script>
+}
+
+

@@ -1,0 +1,77 @@
+﻿@using X.PagedList.Mvc.Core
+@model X.PagedList.IPagedList<ShoesStore.Models.Shoe>
+@{
+    ViewData["Title"] = "All shoes";
+}
+
+<!-- New Arrivals section start -->
+<div class="collection_text">Shoes</div>
+<div class="collection_section layout_padding">
+    <div class="container">
+        @if (@Model.Count != 0)
+        {
+            <h1 class="new_text"><strong>New Arrivals Products</strong></h1>
+            <p class="consectetur_text">consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation</p>
+        }
+        else
+        {
+
+            <h1 class="new_text" style="text-align: center; padding-bottom: 40px"><strong>No shoes is suitable!!</strong></h1>
+        }
+    </div>
+</div>
+<div class="layout_padding gallery_section">
+    <div class="container">
+        <div class="row">
+            @foreach (var shoe in Model)
+            {
+                <div class="col-sm-4">
+                    <div class="best_shoes">
+                        <p class="best_text">@shoe.Name</p>
+                        <div class="shoes_icon"><a asp-controller="Shoe" asp-action="Detail" asp-route-id="@shoe.Id"><img src="~/images/@shoe.Image"></a></div>
+                        <div class="star_text">
+                            <div class="left_part">
+                                <ul>
+                                    <li><a href="#"><img src="~/images/star-icon.png"></a></li>
+                                    <li><a href="#"><img src="~/images/star-icon.png"></a></li>
+                                    <li><a href="#"><img src="~/images/star-icon.png"></a></li>
+                                    <li><a href="#"><img src="~/images/star-icon.png"></a></li>
+                                    <li><a href="#"><img src="~/images/star-icon.png"></a></li>
+                                </ul>
+                            </div>
+                            <div class="right_part">
+                                <div class="shoes_price">$ <span style="color: #ff4e5b;">@shoe.Price</span></div>
+                            </div>
+                            <div class="buy_now_bt" style="width: 400px; padding-right: 50px">
+                                <a class="buy_text" style="padding: 8px" asp-area="User" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@shoe.Id">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+        @if (Model.Count != 0 && Model.Count > ViewBag.pageSize)
+        {
+            <div id="container" style="margin-left: 20px">
+                <p></p>
+                <p></p>
+                <div class="pagination" style="margin-left: 400px">
+                    @if (@ViewBag.allShoe == null)
+                    {
+                        @Html.PagedListPager(Model, page => Url.Action("Find", new { page, keyword = @ViewBag.keyword }))
+                    }
+                    else
+                    {
+                        @Html.PagedListPager(Model, page => Url.Action("AllShoe", new { page }))
+                    }
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+

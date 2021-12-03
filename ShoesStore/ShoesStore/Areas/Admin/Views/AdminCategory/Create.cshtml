@@ -1,0 +1,55 @@
+﻿@model Category
+
+@{
+    ViewData["title"] = "Category";
+    Layout = "_Layout";
+}
+@section head {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- summernote -->
+}
+<div class="border p-4">
+    <div class="form-group row">
+        <h2 class="text-black-50 pl-3">Add new category</h2>
+    </div>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add new category</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" asp-action="CreatePost">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Enter category name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- Page specific script -->
+
+}

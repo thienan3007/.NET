@@ -1,0 +1,38 @@
+﻿@model Shoe
+@{
+    ViewData["Title"] = "Detail";
+}
+
+<div class="collection_text">@Model.Name</div>
+<div class="about_main layout_padding">
+    <div class="collection_section">
+        <div class="container">
+            <h1 class="new_text"><strong>@Model.Name</strong></h1>
+            <p class="consectetur_text">@Model.ShortDes</p>
+        </div>
+    </div>
+    <div class="collectipn_section_3 layout_padding">
+        <div class="container">
+            <div class="racing_shoes">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="shoes-img3"><img src="~/images/@Model.Image"></div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="sale_text"><strong>Sale <br><span style="color: #0a0506;">JOGING</span> <br>SHOES</strong></div>
+                        <div class="number_text"><strong>$ <span style="color: #0a0506">@Model.Price</span></strong></div>
+                        <button class="seemore"><a asp-controller="Shoe" asp-action="AllShoe">See More</a></button>
+                    </div>
+                </div>
+            </div>
+            <strong>Publisher: </strong> @Model.Publisher.Name<br />
+            <strong>Category: </strong> @Model.Category.Name <br />
+            <strong>Quantity: </strong> @Model.Quantity <br />
+            <strong>Status: </strong> @(Model.ShoeLive == true ? "In Stock" : "Out Of Stock")<br />
+        </div>
+        
+    </div>
+   
+
+</div>
+

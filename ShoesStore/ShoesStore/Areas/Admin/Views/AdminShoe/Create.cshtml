@@ -1,0 +1,127 @@
+﻿@model ShoesStore.Models.Shoe
+
+@{
+    ViewData["title"] = "Shoe";
+    Layout = "_Layout";
+}
+@section head {
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- summernote -->
+    <link rel="stylesheet" href="~/plugins/summernote/summernote-bs4.min.css">
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="~/plugins/codemirror/codemirror.css">
+    <link rel="stylesheet" href="~/plugins/codemirror/theme/monokai.css">
+    <!-- SimpleMDE -->
+    <link rel="stylesheet" href="~/plugins/simplemde/simplemde.min.css">
+}
+<div class="border p-4">
+    <div class="form-group row">
+        <h2 class="text-black-50 pl-3">Add new Shoe</h2>
+    </div>
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add new shoe</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form method="post" asp-action="CreatePost" enctype="multipart/form-data">
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input asp-for="Name" type="text" class="form-control" id="name" placeholder="Enter shoe name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="publisher">Publisher</label>
+                    <select asp-for="PublisherId" asp-items="@ViewBag.publisher" class="form-control" id="publisher">
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select asp-for="CategoryId" asp-items="@ViewBag.category" class="form-control" id="category">
+                    </select>
+                </div>
+                <!-- price -->
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input asp-for="Price" type="number" class="form-control" id="price" placeholder="Enter shoe price">
+                    <span asp-validation-for="Price" class="text-danger"></span>
+                </div>
+                <!-- quantity -->
+                <div class="form-group">
+                    <label for="quantity">Quantity</label>
+                    <input asp-for="Quantity" type="number" class="form-control" id="quantity" placeholder="Enter shoe quantity">
+                    <span asp-validation-for="Quantity" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="image">Image</label>
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" asp-for="Image" accept="image/*" class="custom-file-input" name="file" id="image">
+                            <label class="custom-file-label" for="image">Choose file</label>
+
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <span asp-validation-for="Image" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="summernote">Short Description</label>
+                    <textarea id="summernote" asp-for="ShortDes">
+
+                    </textarea>
+                </div>
+                <div class="form-group">
+                    <label for="shoeLiveFalse">Shoe status</label>
+                    <div class="form-check">
+                        <input type="radio" asp-for="ShoeLive" class="form-check-input" value="true" id="shoeLive" name="shoelive">
+                        <label class="form-check-label" for="shoeLive">In stock</label><br />
+                        <input type="radio" asp-for="ShoeLive" class="form-check-input" value="false" id="shoeLiveFalse" name="shoelive">
+                        <label class="form-check-label" for="shoeLiveFalse">Out of stock</label>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+    <!-- Summernote -->
+    <script src="~/plugins/summernote/summernote-bs4.min.js"></script>
+    <!-- CodeMirror -->
+    <script src="~/plugins/codemirror/codemirror.js"></script>
+    <script src="~/plugins/codemirror/mode/css/css.js"></script>
+    <script src="~/plugins/codemirror/mode/xml/xml.js"></script>
+    <script src="~/plugins/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="~/plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
+    <!-- AdminLTE for demo purposes -->
+    <script src="~/dist/js/demo.js"></script>
+    <!-- Page specific script -->
+    <script>
+        $(function () {
+            // Summernote
+            $('#summernote').summernote({
+                height: 150
+            })
+        })
+    </script>
+}
+
+
